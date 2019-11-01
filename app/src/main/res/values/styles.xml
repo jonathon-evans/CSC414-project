@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="LightTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@android:color/background_light</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="btnTxtColor"> #ffffff</item>
+        <item name="txtColor">#F778A1</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:colorBackground">@android:color/background_dark</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:editTextColor">@android:color/black</item>
+        <item name="android:switchTextAppearance">@android:color/white</item>
+        <item name="android:radioButtonStyle">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!-- Alternative Theme
+    <style name="DarkTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:colorBackground">@android:color/background_dark</item>
+        <item name="accentColor"> #000000</item>
+        <item name="txtColor"> #ffffff</item>
+        <item name="btnTxtColor"> #ffffff</item>
+
+    </style> -->
+</resources>
