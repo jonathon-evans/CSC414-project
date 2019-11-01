@@ -2,7 +2,6 @@
     <string name="app_name">Mood</string>
     <string name="get_moody">Get Moody</string>
     <string name="this_is_the_welcome_message">This is the Welcome Message</string>
-    <string name="welcome_to_mood_press_the_button_below_to_start_being_moody">Welcome to Mood! Press the button below to start being moody.</string>
     <string name="happy_music">Happy Music</string>
     <string name="sad_music">Sad Music</string>
     <string name="angry_music">Angry Music</string>
@@ -19,5 +18,7 @@
     <string name="home">Home</string>
     <string name="submit">Submit</string>
     <string name="preferences">Preferences</string>
+    <string name="light_dark">Light/Dark</string>
+    <string name="welcome_to_mood_press_the_button_below_to_start_embracing_your_mood">Welcome to Mood! Press the button below to start embracing your mood.</string>
 </resources>
 
