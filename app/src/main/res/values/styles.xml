@@ -14,7 +14,7 @@
         <item name="android:colorBackground">@android:color/background_dark</item>
         <item name="colorPrimary">#000000</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
-        <item name="android:editTextColor">@android:color/black</item>
+        <item name="android:editTextColor">@android:color/white</item>
         <item name="android:switchTextAppearance">@android:color/white</item>
         <item name="android:radioButtonStyle">@android:color/white</item>
         <item name="android:textColor">@android:color/white</item>
