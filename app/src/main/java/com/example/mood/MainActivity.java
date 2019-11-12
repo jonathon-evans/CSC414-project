@@ -1,22 +1,43 @@
 package com.example.mood;
-
+import org.tensorflow.lite.Interpreter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.provider.MediaStore;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import android.content.ContentProvider;
+import android.content.Context;
+import android.content.ContentResolver;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
 
+import android.net.Uri;
+import android.content.ContentProvider;
 public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
-
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    Interpreter tflite;
     private Button btnForward; //button object created for the forwardBtn on activity_main
+    private Button btnForward1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,34 +65,59 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button submitBtn = (Button) findViewById(R.id.submitBtn); //this will handle the GET MOODY
+        //Button submitBtn = (Button) findViewById(R.id.submitBtn); //this will handle the GET MOODY
         //button once facial recognition is implemented
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText welcomeMsgEditTxt = (EditText) findViewById(R.id.welcomeMsgEditTxt);
-            }
-        });
+        // submitbtn.setonclicklistener(new view.onclicklistener() {
+        //     @override
+        //     public void onclick(view v) {
+        //         edittext welcomemsgedittxt = (edittext) findviewbyid(r.id.welcomemsgedittxt);
+        //     }
+        // });
 
         btnForward = findViewById(R.id.forwardBtn); //finds the forwardBtn id & assigns it to btnForward
-        btnForward.setOnClickListener(new View.OnClickListener(){
+        btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 moveToActivityTwo();
             }
         }); //handles the event for when you click the settings button on activity_main
-    }
-        //Used to Save User's Theme choice
-        public void toggleTheme(boolean darkTheme){
-            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-            editor.putBoolean(PREF_DARK_THEME, darkTheme);
-            editor.apply();
 
-            Intent intent = getIntent();
-            finish();
+        btnForward1 = findViewById(R.id.submitBtn);
+        btnForward1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCameraApp();
 
-            startActivity(intent);
+            }
+
+        });
+
+        try {
+            tflite = new Interpreter(loadModelFile());
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+    }
+
+    private void openCameraApp() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+
+    //Used to Save User's Theme choice
+    public void toggleTheme(boolean darkTheme){
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
+
+        Intent intent = getIntent();
+        finish();
+
+        startActivity(intent);
+    }
 
         /////////////////////////////////////////////////
 
@@ -79,5 +125,15 @@ public class MainActivity extends AppCompatActivity {
         //activity main
         Intent intent = new Intent(MainActivity.this, settings.class );
         startActivity(intent);
+    }
+
+    public MappedByteBuffer loadModelFile() throws IOException
+    {
+        AssetFileDescriptor fileDescriptor=this.getAssets().openFd("converted_ERCNN.tflitle");
+        FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel=inputStream.getChannel();
+        long startOffset =fileDescriptor.getStartOffset();
+        long decalredLength=fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,decalredLength);
     }
 }
