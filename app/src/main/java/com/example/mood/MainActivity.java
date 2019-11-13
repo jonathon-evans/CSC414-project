@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
     public MappedByteBuffer loadModelFile() throws IOException
     {
-        AssetFileDescriptor fileDescriptor=this.getAssets().openFd("converted_ERCNN.tflitle");
+        AssetFileDescriptor fileDescriptor=this.getAssets().openFd("converted_ERCNN.tflite");
         FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
         FileChannel fileChannel=inputStream.getChannel();
         long startOffset =fileDescriptor.getStartOffset();
-        long decalredLength=fileDescriptor.getDeclaredLength();
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,decalredLength);
+        long declaredLength=fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
 }
