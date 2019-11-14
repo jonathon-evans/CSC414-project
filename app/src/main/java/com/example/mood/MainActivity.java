@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import android.content.ContentProvider;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Interpreter tflite;
     private Button btnForward; //button object created for the forwardBtn on activity_main
-    private Button btnForward1;
+    private Button btnForward1; //click listener for tflite
+    private Button btnMoveToMusicActivity; //click listener to move to music activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button submitBtn = (Button) findViewById(R.id.submitBtn); //this will handle the GET MOODY
-        //button once facial recognition is implemented
-        // submitbtn.setonclicklistener(new view.onclicklistener() {
-        //     @override
-        //     public void onclick(view v) {
-        //         edittext welcomemsgedittxt = (edittext) findviewbyid(r.id.welcomemsgedittxt);
-        //     }
-        // });
-
         btnForward = findViewById(R.id.forwardBtn); //finds the forwardBtn id & assigns it to btnForward
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }); //handles the event for when you click the settings button on activity_main
 
+        btnMoveToMusicActivity = findViewById(R.id.moveToMusicBtn); //find the button to move to the music activity
+        btnMoveToMusicActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View s){
+                moveToMusicActivity();
+            }
+        });
         btnForward1 = findViewById(R.id.submitBtn);
         btnForward1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
     private void moveToActivityTwo(){ //creates the event when you click the settings button on
         //activity main
         Intent intent = new Intent(MainActivity.this, settings.class );
+        startActivity(intent);
+    }
+
+
+    private void moveToMusicActivity() {
+        Intent intent = new Intent(MainActivity.this, music.class);
         startActivity(intent);
     }
 
