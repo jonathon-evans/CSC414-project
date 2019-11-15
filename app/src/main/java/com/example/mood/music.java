@@ -66,5 +66,6 @@ public class music extends AppCompatActivity {
 
     private void moveToMainActivity(){
         Intent intent = new Intent(music.this, MainActivity.class);
+        startActivity(intent);
     }
 }
