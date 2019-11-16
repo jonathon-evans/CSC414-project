@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     Interpreter tflite;
     private Button btnForward; //button object created for the forwardBtn on activity_main
     private Button btnForward1; //click listener for tflite
-    private Button btnMoveToMusicActivity; //click listener to move to music activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }); //handles the event for when you click the settings button on activity_main
 
-        btnMoveToMusicActivity = findViewById(R.id.moveToMusicBtn); //find the button to move to the music activity
-        btnMoveToMusicActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View s){
-                moveToMusicActivity();
-            }
-        });
         btnForward1 = findViewById(R.id.submitBtn);
         btnForward1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,12 +116,6 @@ public class MainActivity extends AppCompatActivity {
     private void moveToActivityTwo(){ //creates the event when you click the settings button on
         //activity main
         Intent intent = new Intent(MainActivity.this, settings.class );
-        startActivity(intent);
-    }
-
-
-    private void moveToMusicActivity() {
-        Intent intent = new Intent(MainActivity.this, music.class);
         startActivity(intent);
     }
 
