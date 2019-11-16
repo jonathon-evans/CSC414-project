@@ -17,6 +17,7 @@ public class settings extends AppCompatActivity {
 
 
     private Button btnPrevious; //created a button object to use to call our button id
+    private Button btnMoveToMusicScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +43,12 @@ public class settings extends AppCompatActivity {
             }
         });
 
+        btnMoveToMusicScreen = findViewById(R.id.moveToMusicBtn);
+        btnMoveToMusicScreen.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                moveToMusicActivity();
+            }
+        });
 
         btnPrevious = findViewById(R.id.homeBtn); //this gets the button's id and stores it in btnPrevious
         btnPrevious.setOnClickListener(new View.OnClickListener(){
@@ -67,6 +74,11 @@ public class settings extends AppCompatActivity {
 
     private void moveToActivityOne(){ //handles/creates the event
         Intent intent = new Intent(settings.this, MainActivity.class );
+        startActivity(intent);
+    }
+
+    private void moveToMusicActivity(){
+        Intent intent = new Intent(settings.this, music.class);
         startActivity(intent);
     }
 }
