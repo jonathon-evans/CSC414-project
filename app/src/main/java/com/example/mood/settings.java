@@ -17,7 +17,7 @@ public class settings extends AppCompatActivity {
 
 
     private Button btnPrevious; //created a button object to use to call our button id
-    private Button btnMoveToMusicScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,13 +40,6 @@ public class settings extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton view, boolean isChecked) {
                 toggleTheme(isChecked);
-            }
-        });
-
-        btnMoveToMusicScreen = findViewById(R.id.moveToMusicBtn);
-        btnMoveToMusicScreen.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                moveToMusicActivity();
             }
         });
 
@@ -73,13 +66,8 @@ public class settings extends AppCompatActivity {
     }
 
     private void moveToActivityOne(){ //handles/creates the event
-        Intent intent = new Intent(settings.this, MainActivity.class );
-        startActivity(intent);
-    }
-
-    private void moveToMusicActivity(){
-        Intent intent = new Intent(settings.this, music.class);
-        startActivity(intent);
+        Intent homeintent = new Intent(settings.this, MainActivity.class );
+        startActivity(homeintent);
     }
 }
 

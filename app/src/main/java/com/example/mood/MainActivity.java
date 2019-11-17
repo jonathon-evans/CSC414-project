@@ -4,32 +4,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.provider.MediaStore;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import android.content.ContentProvider;
-import android.content.Context;
-import android.content.ContentResolver;
-import android.graphics.BitmapFactory;
-import android.graphics.Bitmap;
 
-import android.net.Uri;
-import android.content.ContentProvider;
 public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "prefs";
@@ -38,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Interpreter tflite;
     private Button btnForward; //button object created for the forwardBtn on activity_main
     private Button btnForward1; //click listener for tflite
+    private Button toMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 moveToActivityTwo();
             }
         }); //handles the event for when you click the settings button on activity_main
+
+        toMusic = findViewById(R.id.musicBtn);
+        toMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToMusic();
+            }
+        });
 
         btnForward1 = findViewById(R.id.submitBtn);
         btnForward1.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void moveToMusic(){
+        Intent moveMusicIntent = new Intent(MainActivity.this, music.class);
+        startActivity(moveMusicIntent);
+    }
     public MappedByteBuffer loadModelFile() throws IOException
     {
         AssetFileDescriptor fileDescriptor=this.getAssets().openFd("converted_ERCNN.tflite");

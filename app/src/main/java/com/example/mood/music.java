@@ -1,21 +1,28 @@
 package com.example.mood;
-
+import org.tensorflow.lite.Interpreter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.provider.MediaStore;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class music extends AppCompatActivity {
+
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
-    static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    private Button btnMoveToMainScreen;
+    private Button btnMoveToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,28 +51,33 @@ public class music extends AppCompatActivity {
             }
         });
 
-        btnMoveToMainScreen = findViewById(R.id.musicToHomeBtn);
-        btnMoveToMainScreen.setOnClickListener(new View.OnClickListener() {
+        btnMoveToHome = findViewById(R.id.musicHomeBtn);
+        btnMoveToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveToMainActivity();
+                moveToHome();
             }
         });
+
     }
-        //Used to Save User's Theme choice
-        public void toggleTheme(boolean darkTheme){
-            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-            editor.putBoolean(PREF_DARK_THEME, darkTheme);
-            editor.apply();
 
-            Intent intent = getIntent();
-            finish();
+    //Used to Save User's Theme choice
+    public void toggleTheme(boolean darkTheme){
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
 
-            startActivity(intent);
-        }
+        Intent intent = getIntent();
+        finish();
 
-        private void moveToMainActivity(){
-            Intent intent = new Intent(music.this, MainActivity.class);
-            startActivity(intent);
-        }
+        startActivity(intent);
+    }
+
+    /////////////////////////////////////////////////
+
+    private void moveToHome(){
+        Intent moveToHomeIntent = new Intent(music.this, MainActivity.class);
+        startActivity(moveToHomeIntent);
+    }
+
 }
