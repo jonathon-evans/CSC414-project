@@ -1,22 +1,28 @@
 package com.example.mood;
-
+import org.tensorflow.lite.Interpreter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.provider.MediaStore;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class settings extends AppCompatActivity {
+public class music extends AppCompatActivity {
 
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
 
-
-    private Button btnPrevious; //created a button object to use to call our button id
+    private Button btnMoveToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +35,14 @@ public class settings extends AppCompatActivity {
             setTheme(R.style.DarkTheme);
         }
 
+        ////////////////////////////////////////
+
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_music);
 
         //for Switch Theme Toggle
-        Switch toggle = findViewById(R.id.settingsThemeSwitch);
+        Switch toggle = findViewById(R.id.lightDarkMusicSwitch);
         toggle.setChecked(useDarkTheme);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -43,14 +51,14 @@ public class settings extends AppCompatActivity {
             }
         });
 
-        btnPrevious = findViewById(R.id.homeBtn); //this gets the button's id and stores it in btnPrevious
-        btnPrevious.setOnClickListener(new View.OnClickListener(){
+        btnMoveToHome = findViewById(R.id.musicHomeBtn);
+        btnMoveToHome.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                moveToActivityOne();
+            public void onClick(View v) {
+                moveToHome();
             }
-        }); //this is an event handler that tells what happens when btnPrevious (homeBtn) is clicked
-        //in the settings activity
+        });
+
     }
 
     //Used to Save User's Theme choice
@@ -65,12 +73,11 @@ public class settings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void moveToActivityOne(){ //handles/creates the event
-        Intent homeintent = new Intent(settings.this, MainActivity.class );
-        startActivity(homeintent);
-    }
-}
+    /////////////////////////////////////////////////
 
-/*
-I created this file to navigate between activity_main & activity_settings
- */
+    private void moveToHome(){
+        Intent moveToHomeIntent = new Intent(music.this, MainActivity.class);
+        startActivity(moveToHomeIntent);
+    }
+
+}

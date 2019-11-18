@@ -8,183 +8,175 @@
 
     <TextView
         android:id="@+id/whenSadPlainTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="80dp"
         android:text="@string/when_you_re_sad_do_you_like_to_listen_to"
         app:fontFamily="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/whenMadPlainTxt"
+        app:layout_constraintEnd_toStartOf="@+id/happyRadioBtn1"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/whenHappyPlainTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_width="193dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginBottom="116dp"
         android:text="@string/when_you_re_happy_do_you_like_to_listen_to"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/angryRadioBtn2" />
+        app:layout_constraintBottom_toTopOf="@+id/homeBtn"
+        app:layout_constraintEnd_toStartOf="@+id/happyRadioBtn3" />
 
     <RadioButton
         android:id="@+id/sadRadioBtn1"
         android:layout_width="124dp"
         android:layout_height="36dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:text="@string/sad_music"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/happyRadioBtn1" />
+        app:layout_constraintBottom_toTopOf="@+id/angryRadioBtn1"
+        app:layout_constraintStart_toEndOf="@+id/whenSadPlainTxt" />
 
     <RadioButton
         android:id="@+id/angryRadioBtn1"
         android:layout_width="124dp"
         android:layout_height="36dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="227dp"
+        android:layout_marginLeft="227dp"
+        android:layout_marginBottom="17dp"
         android:text="@string/angry_music"
         android:typeface="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/whenMadPlainTxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sadRadioBtn1" />
+        app:layout_constraintBottom_toTopOf="@+id/happyRadioBtn2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
         android:id="@+id/happyRadioBtn1"
         android:layout_width="124dp"
         android:layout_height="36dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:text="@string/happy_music"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whenSadPlainTxt" />
+        app:layout_constraintBottom_toTopOf="@+id/sadRadioBtn1"
+        app:layout_constraintStart_toEndOf="@+id/whenSadPlainTxt" />
 
     <RadioButton
         android:id="@+id/happyRadioBtn3"
-        android:layout_width="264dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="162dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/the_happiest_music_possible"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whenHappyPlainTxt" />
+        app:layout_constraintBottom_toTopOf="@+id/sadRadioBtn3"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioButton
         android:id="@+id/sadRadioBtn3"
-        android:layout_width="264dp"
-        android:layout_height="25dp"
+        android:layout_width="162dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
         android:text="@string/the_saddest_music_possible"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/happyRadioBtn3" />
+        app:layout_constraintBottom_toTopOf="@+id/angryRadioBtn3"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioButton
         android:id="@+id/angryRadioBtn3"
-        android:layout_width="264dp"
-        android:layout_height="25dp"
+        android:layout_width="162dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="28dp"
         android:text="@string/the_angriest_music_possible"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sadRadioBtn3" />
+        app:layout_constraintBottom_toTopOf="@+id/homeBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/whenMadPlainTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="193dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="94dp"
         android:text="@string/when_you_re_mad_do_you_like_to_listen_to"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/angryRadioBtn1" />
+        app:layout_constraintBottom_toTopOf="@+id/whenHappyPlainTxt"
+        app:layout_constraintEnd_toStartOf="@+id/happyRadioBtn2" />
 
     <RadioButton
         android:id="@+id/happyRadioBtn2"
-        android:layout_width="117dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/happier_music"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whenMadPlainTxt" />
+        app:layout_constraintBottom_toTopOf="@+id/sadRadioBtn2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioButton
         android:id="@+id/sadRadioBtn2"
-        android:layout_width="117dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
         android:text="@string/sadder_music"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/happyRadioBtn2" />
+        app:layout_constraintBottom_toTopOf="@+id/angryRadioBtn2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioButton
         android:id="@+id/angryRadioBtn2"
-        android:layout_width="117dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginBottom="13dp"
         android:text="@string/angrier_music"
         android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sadRadioBtn2" />
+        app:layout_constraintBottom_toTopOf="@+id/happyRadioBtn3"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/homeBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="302dp"
-        android:layout_marginRight="302dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="152dp"
+        android:layout_marginBottom="120dp"
         android:background="#fdeef4"
         android:text="@string/home"
         android:textColor="#000000"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/angryRadioBtn3" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/prefSubmitBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:layout_marginLeft="157dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="166dp"
-        android:layout_marginRight="166dp"
-        android:layout_marginBottom="122dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="120dp"
         android:background="#fdeef4"
         android:text="@string/submit"
         android:textColor="#000000"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/angryRadioBtn3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/homeBtn" />
 
     <EditText
         android:id="@+id/prefEditText"

@@ -23,6 +23,7 @@ import java.nio.channels.FileChannel;
 import com.spotify.android.appremote.api.ConnectionParams;
 import com.spotify.android.appremote.api.Connector;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.spotify.protocol.client.Subscription;
 import com.spotify.protocol.types.PlayerState;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Interpreter tflite;
     private Button btnForward; //button object created for the forwardBtn on activity_main
-    private Button btnForward1;
+    private Button btnForward1; //click listener for tflite
+    private Button toMusic;
 
     private static final String CLIENT_ID = "54abaef1cc07451cbb9813346073de4c";
     private static final String REDIRECT_URI = "com.example.mood://callback";
@@ -69,15 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button submitBtn = (Button) findViewById(R.id.submitBtn); //this will handle the GET MOODY
-        //button once facial recognition is implemented
-        // submitbtn.setonclicklistener(new view.onclicklistener() {
-        //     @override
-        //     public void onclick(view v) {
-        //         edittext welcomemsgedittxt = (edittext) findviewbyid(r.id.welcomemsgedittxt);
-        //     }
-        // });
-
         btnForward = findViewById(R.id.forwardBtn); //finds the forwardBtn id & assigns it to btnForward
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
                 moveToActivityTwo();
             }
         }); //handles the event for when you click the settings button on activity_main
+
+        toMusic = findViewById(R.id.musicBtn);
+        toMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToMusic();
+            }
+        });
 
         btnForward1 = findViewById(R.id.submitBtn);
         btnForward1.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void moveToMusic(){
+        Intent moveMusicIntent = new Intent(MainActivity.this, music.class);
+        startActivity(moveMusicIntent);
+    }
     public MappedByteBuffer loadModelFile() throws IOException
     {
         AssetFileDescriptor fileDescriptor=this.getAssets().openFd("converted_ERCNN.tflite");
