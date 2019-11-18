@@ -99,7 +99,7 @@
         android:layout_marginRight="162dp"
         android:layout_marginBottom="44dp"
         android:background="#F778A1"
-        android:text="@string/music"
+        android:text="string/music"
         android:textColor="@android:color/white"
         android:typeface="monospace"
         app:layout_constraintBottom_toTopOf="@+id/forwardBtn"

@@ -20,14 +20,6 @@ import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-import com.spotify.android.appremote.api.ConnectionParams;
-import com.spotify.android.appremote.api.Connector;
-import com.spotify.android.appremote.api.SpotifyAppRemote;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.spotify.protocol.client.Subscription;
-import com.spotify.protocol.types.PlayerState;
-import com.spotify.protocol.types.Track;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnForward1; //click listener for tflite
     private Button toMusic;
 
-    private static final String CLIENT_ID = "54abaef1cc07451cbb9813346073de4c";
-    private static final String REDIRECT_URI = "com.example.mood://callback";
-    private SpotifyAppRemote mSpotifyAppRemote;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,74 +136,6 @@ public class MainActivity extends AppCompatActivity {
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        ConnectionParams connectionParams =
-                new ConnectionParams.Builder(CLIENT_ID)
-                    .setRedirectUri(REDIRECT_URI)
-                    .showAuthView(true)
-                    .build();
-        SpotifyAppRemote.connect(this, connectionParams,
-                new Connector.ConnectionListener() {
-                    @Override
-                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
-                        mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected!");
-
-                        connected(0); //make sure to put this function call wherever the camera gets called from
-                    }
-
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        Log.e("MainActivity ErrorError", throwable.getMessage(), throwable);
-                    }
-                });
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
-    }
-
-    private void connected(Integer emotion) {
-
-        switch (emotion) {
-            case 0:
-                //TODO
-                //This is just a test btw
-                mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-                break;
-            case 1:
-                //TODO
-                break;
-            case 2:
-                //TODO
-                break;
-            case 3:
-                //TODO
-                break;
-            case 4:
-                //TODO
-                break;
-            case 5:
-                //TODO
-                break;
-            case 6:
-                //TODO
-                break;
-        }
-
-        mSpotifyAppRemote.getPlayerApi()
-                    .subscribeToPlayerState()
-                    .setEventCallback(playerState -> {
-                       final Track track = playerState.track;
-                       if(track != null) {
-                           Log.d("MainActivity", track.name + " by " + track.artist.name);
-                       }
-                    });
-    }
 
 }
