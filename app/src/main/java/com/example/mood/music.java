@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.provider.MediaStore;
+import android.widget.TextView;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -109,14 +110,14 @@ public class music extends AppCompatActivity {
                     @Override
                     public void onConnected(SpotifyAppRemote spotifyAppRemote) {
                         mSpotifyAppRemote = spotifyAppRemote;
-                        Log.d("MainActivity", "Connected!");
+                        Log.d("MusicActivity", "Connected!");
 
-                        connected(1); //make sure to put this function call wherever the camera gets called from
+                        connected(5); //make sure to put this function call wherever the camera gets called from
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
-                        Log.e("MainActivity ErrorError", throwable.getMessage(), throwable);
+                        Log.e("MusicActivity Error", throwable.getMessage(), throwable);
                     }
                 });
     }
@@ -172,10 +173,15 @@ public class music extends AppCompatActivity {
         mSpotifyAppRemote.getPlayerApi()
                 .subscribeToPlayerState()
                 .setEventCallback(playerState -> {
+                    String message = "Now Playing: ";
                     final Track track = playerState.track;
                     if(track != null) {
-                        Log.d("MainActivity", track.name + " by " + track.artist.name);
+                        message =track.name + "\nby\n" + track.artist.name;
+
                     }
+
+                    TextView textView = (TextView) findViewById(R.id.textView);
+                    textView.setText(message);
                 });
     }
 
