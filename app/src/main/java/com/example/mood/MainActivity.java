@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.write(reeeeee);
         }
     }
+    
 
     public Bitmap toGrayscale(Bitmap bmpOriginal)
     {        
